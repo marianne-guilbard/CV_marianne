@@ -149,12 +149,43 @@ export default function PhDThesis() {
           </Card>
         </div>
 
-          {/* Graphical Abstract */}
+         {/* Graphical Abstract */}
           <div id="abstract">
             <SectionTitle>🧬 Graphical Abstract</SectionTitle>
             <div style={{ textAlign: "center", margin: "1.5rem 0" }}>
               <div className="abstract-container" style={{ display: "inline-block", width: "80%" }}>
-                <p style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#999", fontStyle: "italic" }}>Coming soon...</p>
+                <img
+                  src={`${import.meta.env.BASE_URL}image_phd.png`}
+                  alt="Graphical abstract – Dual-compartment model of AGR2"
+                  style={{
+                    width: "100%",
+                    borderRadius: "4px",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                    border: "1px solid #dde6e8",
+                    display: "block",
+                  }}
+                />
+                <p style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: "0.95rem",
+                  fontWeight: 700,
+                  color: "#1a1a2e",
+                  lineHeight: 1.6,
+                  margin: "1.2rem 0 0.6rem",
+                  textAlign: "center",
+                }}>
+                  Dual-compartment model of AGR2 coupling ER proteostasis (iAGR2) and extracellular metabolic activation (eAGR2) in a self-reinforcing loop that enhances tumour cell aggressiveness.
+                </p>
+                <p style={{
+                  fontFamily: "Georgia, serif",
+                  fontSize: "0.90rem",
+                  color: "#555",
+                  fontStyle: "italic",
+                  lineHeight: 1.7,
+                  textAlign: "justify",
+                }}>
+                  Intracellular AGR2 (iAGR2), functions as an ER-resident PDI that promotes protein folding, catalyses disulphide bond formation, alleviates ER stress, and regulates the unfolded protein response (UPR), thereby maintaining proteostasis and supporting cell survival under stress. Meanwhile, extracellular AGR2 (eAGR2) modulates the autophagy–lysosome axis, enhancing amino acid recycling and sustaining global protein synthesis. By linking intracellular folding capacity with extracellular metabolic and translational control, iAGR2 and eAGR2 establish a self-reinforcing loop that coordinates protein homeostasis and translation. Collectively, this dual-compartment regulation supports the high biosynthetic activity characteristic of tumour cells and drives tumour cell aggressiveness, integrating ER homeostasis, vesicular trafficking, and metabolic activation into a unified regulatory model.
+                </p>
               </div>
             </div>
           </div>
