@@ -96,12 +96,12 @@ function ResearchCard({ emoji, title, institution, supervisor, supervisorLink, p
             {institution}
           </p>
           {supervisor && (
-            <p style={{ fontSize: "0.88rem", color: "#666", marginBottom: "0.3rem", fontFamily: "Georgia, serif" }}>
+            <p style={{ fontSize: "0.95rem", color: "#666", marginBottom: "0.3rem", fontFamily: "Georgia, serif" }}>
               Supervisor: <a href={supervisorLink} target="_blank" rel="noopener noreferrer" style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{supervisor}</a>
             </p>
           )}
           {project && (
-            <p style={{ fontSize: "0.88rem", color: "#666", fontFamily: "Georgia, serif" }}>
+            <p style={{ fontSize: "0.95rem", color: "#666", fontFamily: "Georgia, serif" }}>
               Project:{" "}
               {projectLink
                 ? <Link to={projectLink} style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{project}</Link>
@@ -243,20 +243,18 @@ function CV() {
         }
         .fade-up { animation: fadeUp 0.7s ease both; }
         .fade-up-2 { animation: fadeUp 0.7s 0.15s ease both; }
-     @media (max-width: 900px) {
-        .sidebar { display: none !important; }
-        .main-content { margin-left: 0 !important; }
-        .mobile-nav { display: flex !important; }
-        .edu-grid { grid-template-columns: 1fr !important; }
-        .about-grid { grid-template-columns: 1fr !important; }
-        .about-img { display: block; margin: 1.5rem auto 0; width: 180px !important; }
-        .edu-img { display: block; margin: 1.5rem auto 0; width: 60% !important; }
-      }
+        @media (max-width: 900px) {
+          .sidebar { display: none !important; }
+          .main-content { margin-left: 0 !important; }
+          .mobile-nav { display: flex !important; }
+          .edu-grid { grid-template-columns: 1fr !important; }
+          .edu-img { display: block; margin: 1.5rem auto 0; width: 60% !important; }
+        }
 
-      @media (max-width: 600px) {
-        .about-grid { grid-template-columns: 1fr !important; }
-        .about-img { display: block; margin: 1.5rem auto 0; width: 180px !important; }
-      }
+        @media (max-width: 600px) {
+          .about-grid { grid-template-columns: 1fr !important; }
+          .about-img { display: block; margin: 1.5rem auto 0; width: 180px !important; }
+        }
       `}</style>
 
       {/* Top bar */}

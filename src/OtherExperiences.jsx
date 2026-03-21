@@ -30,6 +30,11 @@ export default function OtherExperiences() {
         @media (max-width: 900px) {
           .exp-sidebar { display: none !important; }
           .exp-content { margin-left: 0 !important; }
+          .exp-img { width: 85% !important; }
+        }
+
+        @media (max-width: 600px) {
+          .exp-img { width: 100% !important; }
         }
       `}</style>
 
@@ -243,7 +248,7 @@ function ExperienceCard({ title, role, location, year, description, skills, link
           <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.88rem", color: "#2a6b7c" }}>{role}</div>
         </div>
         <div style={{ textAlign: "right", flexShrink: 0 }}>
-          <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1rem", fontWeight: 700, color: "#2a6b7c" }}>{year}</div>
+          <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1git initrem", fontWeight: 700, color: "#2a6b7c" }}>{year}</div>
           <div style={{ fontFamily: "Georgia, serif", fontSize: "0.92rem", color: "#888", marginTop: "0.2rem" }}>{location}</div>
         </div>
       </div>
@@ -281,12 +286,11 @@ function ExperienceCard({ title, role, location, year, description, skills, link
         onMouseLeave={e => e.currentTarget.style.color = "#2a6b7c"}
         >↗ {linkLabel}</a>
       )}
-
       {/* Image */}
       {image && (
         <div style={{ marginTop: "1.2rem", textAlign: "center" }}>
-          <img src={image} alt={imageAlt} style={{
-            width: imageWidth,
+          <img src={image} alt={imageAlt} className="exp-img" style={{
+            width: "70%",
             borderRadius: "4px",
             border: "1px solid #dde6e8",
             boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
