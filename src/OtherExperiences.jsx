@@ -132,7 +132,7 @@ export default function OtherExperiences() {
               linkLabel="Learn more about CLC"
               image={`${import.meta.env.BASE_URL}CLC_picture.png`}
               imageAlt="CLC — linguistic stay"
-              imageWidth="55%"
+              imageWidth="45%"
             />
 
             <ExperienceCard
