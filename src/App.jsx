@@ -443,6 +443,14 @@ function CV() {
             />
           </section>
 
+          {/* Publications */}
+          <section id="publications" style={{ paddingTop: "4rem" }}>
+            <SectionTitle>Publications</SectionTitle>
+            <PubCard title="PhD Thesis — Compartmentalised functions of AGR2 in cancer progression" href="https://theses.hal.science/tel-05558177" />
+            <PubCard title="Modulation of PDI Functions by Localization: The Example of the Anterior Gradient Family" href="https://doi.org/10.1089/ars.2024.0561" />
+            <PubCard title="Endoplasmic Reticulum Homeostasis — From Molecules to Organisms: Report on the 14th International Calreticulin Workshop" href="https://doi.org/10.1111/jcmm.17840" />
+          </section>
+
           {/* Funding */}
           <section id="funding" style={{ paddingTop: "4rem" }}>
             <SectionTitle>Funding & Awards</SectionTitle>
@@ -450,14 +458,6 @@ function CV() {
             <AwardCard year="2023" title="Best Poster Award" org="14th International Calreticulin Workshop · Saint-Malo, France" detail='"AGR2: A link between ER proteostasis and cancer proliferation"' />
             <AwardCard year="2023" title="CIFRE Doctoral Fellowship" org="ANRT & Thabor Therapeutics" detail="Industrial–academic grant supporting a collaborative PhD between an academic research laboratory and a pharmaceutical partner." />
             <AwardCard year="2020" title="Erasmus+ Mobility Scholarship" org="European Commission" detail="Awarded for a full academic year of international study at the University of Galway, Ireland." />
-          </section>
-
-          {/* Publications */}
-          <section id="publications" style={{ paddingTop: "4rem" }}>
-            <SectionTitle>Publications</SectionTitle>
-            <PubCard title="PhD Thesis — Compartmentalised functions of AGR2 in cancer progression" href="https://theses.hal.science/tel-05558177" />
-            <PubCard title="Modulation of PDI Functions by Localization: The Example of the Anterior Gradient Family" href="https://doi.org/10.1089/ars.2024.0561" />
-            <PubCard title="Endoplasmic Reticulum Homeostasis — From Molecules to Organisms: Report on the 14th International Calreticulin Workshop" href="https://doi.org/10.1111/jcmm.17840" />
           </section>
 
           {/* Conferences */}
@@ -511,7 +511,7 @@ function CV() {
             <SectionTitle>Teaching & Mentorship</SectionTitle>
             <ResearchCard
               emoji="🤝"
-              title="Mentor — International Internship Exchange Programme"
+              title="Mentor — International Internship Exchange Program"
               institution="Mentorship of an international pharmacy student during a research internship"
               period="June – July 2025"
             />

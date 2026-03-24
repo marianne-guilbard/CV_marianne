@@ -127,7 +127,7 @@ export default function M1Internship() {
             <Card>
             <p><strong>Research Team</strong></p>
             <p style={{ marginTop: "0.4rem", textAlign: "justify" }}>
-                I joined the team led by <a href="https://iab-grenoble.fr/en/recherche/equipes/dynamique-de-la-methylation-des-proteines-dans-le-cancer" target="_blank" rel="noopener noreferrer" style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }} onMouseEnter={e => e.currentTarget.style.color = "#1a1a2e"} onMouseLeave={e => e.currentTarget.style.color = "#2a6b7c"}>Nicolas Reynoird ↗</a>, whose research focuses on the dynamics of protein methylation in cancer. The team investigates how post-translational methylation events regulate key cellular processes — including gene expression, metabolism, and cell proliferation — and how their dysregulation contributes to tumour development and progression.
+                I joined the team led by <a href="https://iab-grenoble.fr/en/recherche/equipes/dynamique-de-la-methylation-des-proteines-dans-le-cancer" target="_blank" rel="noopener noreferrer" style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }} onMouseEnter={e => e.currentTarget.style.color = "#1a1a2e"} onMouseLeave={e => e.currentTarget.style.color = "#2a6b7c"}>Nicolas Reynoird ↗</a>, whose research focuses on the dynamics of protein methylation in cancer. The team investigates how post-translational methylation events regulate key cellular processes including gene expression, metabolism, and cell proliferation and how their dysregulation contributes to tumour development and progression.
             </p>
             </Card>
           </div>
