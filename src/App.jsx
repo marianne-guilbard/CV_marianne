@@ -210,7 +210,7 @@ function EduCard({ degree, institution, years, description, link }) {
       </div>
       {open && (
         <div style={{ padding: "0 1.5rem 1.2rem", borderTop: "1px solid #eef0f2" }}>
-          <p style={{ fontFamily: "Georgia, serif", fontSize: "0.94rem", color: "#444", lineHeight: 1.7, marginTop: "1rem" }}>{description}</p>
+          <p style={{ fontFamily: "Georgia, serif", fontSize: "0.94rem", color: "#444", lineHeight: 1.7, marginTop: "1rem", textAlign: "justify" }}>{description}</p>
           {link && <a href={link} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>View Programme →</a>}
         </div>
       )}
@@ -530,13 +530,13 @@ function CV() {
               degree="PhD in Life Sciences"
               institution="University of Bordeaux, France"
               years="2023–2026"
-              description="This PhD represented a meaningful step in my academic journey, undertaken to consolidate my training through long-term immersion in research and to develop genuine scientific independence. The doctoral project gave me the opportunity to fully integrate the knowledge and skills built during my Bachelor's and Master's degrees — from experimental design to critical data analysis and scientific communication. Through sustained involvement in a complete research cycle, from conceptualisation to publication, I was able to structure and disseminate scientific results and grow into a more autonomous and confident researcher."
+              description="This PhD represented a meaningful step in my academic journey, undertaken to consolidate my training through long-term immersion in research and to develop genuine scientific independence. The doctoral project gave me the opportunity to fully integrate the knowledge and skills built during my Bachelor's and Master's degrees, from experimental design to critical data analysis and scientific communication. Through sustained involvement in a complete research cycle, from conceptualisation to publication, I was able to structure and disseminate scientific results and grow into a more autonomous and confident researcher."
             />
             <EduCard
               degree="Master's in Physiology, Epigenetics, Differentiation & Cancer"
               institution="University of Grenoble Alpes, France"
               years="2020–2022"
-              description="I pursued this Master's degree to deepen my understanding of advanced biological mechanisms within a fully English-taught curriculum designed for international research environments. The programme combined in-depth coursework with rigorous examinations and oral presentations, which helped me develop critical thinking, scientific autonomy, and clear scientific communication. This training gave me a strong methodological and conceptual foundation for tackling complex biological questions and ultimately prepared me to move toward doctoral-level research."
+              description="I pursued this Master's degree to deepen my understanding of advanced biological mechanisms within a fully English-taught curriculum designed for international research environments. The program combined in-depth coursework with rigorous examinations and oral presentations, which helped me develop critical thinking, scientific autonomy, and clear scientific communication. This training gave me a strong methodological and conceptual foundation for tackling complex biological questions and ultimately prepared me to move toward doctoral-level research."
               link="https://formations.univ-grenoble-alpes.fr/fr/catalogue-2021/master-XB/master-biologie-IAQKB0GE/parcours-physiology-epigenetics-differentiation-and-cancer-2e-annee-IBAVFFMU.html"
             />
             <EduCard
