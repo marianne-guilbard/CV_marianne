@@ -446,7 +446,7 @@ function CV() {
           {/* Publications */}
           <section id="publications" style={{ paddingTop: "4rem" }}>
             <SectionTitle>Publications</SectionTitle>
-            <PubCard title="PhD Thesis — Compartmentalised functions of AGR2 in cancer progression" href="https://theses.hal.science/tel-05558177" />
+            <PubCard title="PhD Thesis — Study of the functions of the secreted protein disulfide isomerase, AGR2, in tumor adaptation" href="https://theses.hal.science/tel-05558177" />
             <PubCard title="Modulation of PDI Functions by Localization: The Example of the Anterior Gradient Family" href="https://doi.org/10.1089/ars.2024.0561" />
             <PubCard title="Endoplasmic Reticulum Homeostasis — From Molecules to Organisms: Report on the 14th International Calreticulin Workshop" href="https://doi.org/10.1111/jcmm.17840" />
           </section>
