@@ -32,11 +32,19 @@ export default function M2Internship() {
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f0ede6; }
         ::-webkit-scrollbar-thumb { background: #2a6b7c; border-radius: 3px; }
-       @media (max-width: 900px) {
-        .m2-sidebar { display: none !important; }
-        .m2-content { margin-left: 0 !important; }
-        .abstract-container { width: 100% !important; }
-      }
+        @media (max-width: 900px) {
+          .m2-sidebar { display: none !important; }
+          .m2-content { margin-left: 0 !important; }
+          .abstract-container { width: 80% !important; }
+          .m2-hero { padding: 2rem 1.5rem !important; }
+          .m2-main-content { padding: 2rem 1.5rem 4rem !important; }
+        }
+
+        @media (max-width: 600px) {
+          .abstract-container { width: 100% !important; }
+          .m2-hero { padding: 1.5rem 1rem !important; }
+          .m2-main-content { padding: 1.5rem 1rem 3rem !important; }
+        }
       `}</style>
 
       {/* Top bar */}
@@ -97,7 +105,7 @@ export default function M2Internship() {
       <main className="m2-content" style={{ marginLeft: "200px", paddingTop: "52px" }}>
 
         {/* Hero */}
-        <section style={{
+        <section className="m2-hero" style={{
           background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%)",
           padding: "3rem 4rem",
           position: "relative", overflow: "hidden",
@@ -118,7 +126,7 @@ export default function M2Internship() {
         </section>
 
         {/* Content */}
-        <div style={{ padding: "3rem 4rem 5rem" }}>
+        <div className="m2-main-content" style={{ padding: "3rem 4rem 5rem" }}>
 
           {/* Institute & Team */}
           <div id="institute">

@@ -32,13 +32,21 @@ export default function PhDThesis() {
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f0ede6; }
         ::-webkit-scrollbar-thumb { background: #2a6b7c; border-radius: 3px; }
-       @media (max-width: 900px) {
-        .phd-sidebar { display: none !important; }
-        .phd-content { margin-left: 0 !important; }
-        .about-grid { grid-template-columns: 1fr !important; }
-        .about-img { display: block; margin: 1.5rem auto 0; }
-        .abstract-container { width: 100% !important; }
-      }
+        @media (max-width: 900px) {
+          .phd-sidebar { display: none !important; }
+          .phd-content { margin-left: 0 !important; }
+          .about-grid { grid-template-columns: 1fr !important; }
+          .about-img { display: block; margin: 1.5rem auto 0; }
+          .abstract-container { width: 80% !important; }
+          .phd-hero { padding: 2rem 1.5rem !important; }
+          .phd-main-content { padding: 2rem 1.5rem 4rem !important; }
+        }
+
+        @media (max-width: 600px) {
+          .abstract-container { width: 100% !important; }
+          .phd-hero { padding: 1.5rem 1rem !important; }
+          .phd-main-content { padding: 1.5rem 1rem 3rem !important; }
+        }
       `}</style>
 
       {/* Top bar */}
@@ -99,7 +107,7 @@ export default function PhDThesis() {
       <main className="phd-content" style={{ marginLeft: "200px", paddingTop: "52px" }}>
 
         {/* Hero */}
-        <section style={{
+        <section className="phd-hero" style={{
           background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%)",
           padding: "3rem 4rem",
           position: "relative", overflow: "hidden",
@@ -120,7 +128,7 @@ export default function PhDThesis() {
         </section>
 
         {/* Content */}
-        <div style={{ padding: "3rem 4rem 5rem" }}>
+        <div className="phd-main-content" style={{ padding: "3rem 4rem 5rem" }}>
 
           {/* Institute & Team */}
           <div id="institute">

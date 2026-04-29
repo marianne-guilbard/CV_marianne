@@ -31,10 +31,16 @@ export default function OtherExperiences() {
           .exp-sidebar { display: none !important; }
           .exp-content { margin-left: 0 !important; }
           .exp-img { width: 85% !important; }
+          .exp-hero { padding: 2rem 1.5rem !important; }
+          .exp-main-content { padding: 2rem 1.5rem 4rem !important; }
         }
 
         @media (max-width: 600px) {
           .exp-img { width: 100% !important; }
+          .exp-hero { padding: 1.5rem 1rem !important; }
+          .exp-main-content { padding: 1.5rem 1rem 3rem !important; }
+          .exp-card-header { flex-direction: column !important; gap: 0.4rem !important; }
+          .exp-card-meta { text-align: left !important; }
         }
       `}</style>
 
@@ -94,7 +100,7 @@ export default function OtherExperiences() {
       <main className="exp-content" style={{ marginLeft: "200px", paddingTop: "52px" }}>
 
         {/* Hero */}
-        <section style={{
+        <section className="exp-hero" style={{
           background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%)",
           padding: "3rem 4rem",
           position: "relative", overflow: "hidden",
@@ -115,7 +121,7 @@ export default function OtherExperiences() {
         </section>
 
         {/* Content */}
-        <div style={{ padding: "3rem 4rem 5rem" }}>
+        <div className="exp-main-content" style={{ padding: "3rem 4rem 5rem" }}>
 
           {/* International */}
           <div id="international">
@@ -242,13 +248,13 @@ function ExperienceCard({ title, role, location, year, description, skills, link
     onMouseLeave={e => e.currentTarget.style.boxShadow = "none"}
     >
       {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "1rem", marginBottom: "0.8rem" }}>
+      <div className="exp-card-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "1rem", marginBottom: "0.8rem" }}>
         <div>
           <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.1rem", fontWeight: 700, color: "#1a1a2e", marginBottom: "0.2rem" }}>{title}</h3>
           <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.88rem", color: "#2a6b7c" }}>{role}</div>
         </div>
-        <div style={{ textAlign: "right", flexShrink: 0 }}>
-          <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1git initrem", fontWeight: 700, color: "#2a6b7c" }}>{year}</div>
+        <div className="exp-card-meta" style={{ textAlign: "right", flexShrink: 0 }}>
+          <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1rem", fontWeight: 700, color: "#2a6b7c" }}>{year}</div>
           <div style={{ fontFamily: "Georgia, serif", fontSize: "0.92rem", color: "#888", marginTop: "0.2rem" }}>{location}</div>
         </div>
       </div>

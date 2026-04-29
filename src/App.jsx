@@ -88,9 +88,9 @@ function ResearchCard({ emoji, title, institution, supervisor, supervisorLink, p
       <div style={{ display: "flex", alignItems: "flex-start", gap: "0.8rem" }}>
         <span style={{ fontSize: "1.3rem", marginTop: "0.1rem" }}>{emoji}</span>
         <div style={{ flex: 1 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+          <div className="cv-card-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.5rem" }}>
             <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.2rem", fontWeight: 700, color: "#1a1a2e", marginBottom: "0.3rem" }}>{title}</h3>
-            {period && <Tag>{period}</Tag>}
+            {period && <span className="cv-card-meta" style={{ flexShrink: 0 }}><Tag>{period}</Tag></span>}
           </div>
           <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "1rem", color: "#4a5568", marginBottom: "0.5rem" }}>
             {institution}
@@ -195,15 +195,16 @@ function EduCard({ degree, institution, years, description, link }) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "flex-start",
+          gap: "0.8rem",
           background: open ? "#f4f9fa" : "#fff",
           transition: "background 0.2s",
         }}
       >
-        <div>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.05rem", fontWeight: 700, color: "#1a1a2e", marginBottom: "0.25rem" }}>{degree}</div>
           <div style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#2a6b7c" }}>{institution}</div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.4rem", flexShrink: 0, marginLeft: "1rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.4rem", flexShrink: 0 }}>
           <Tag>{years}</Tag>
           <span style={{ color: "#2a6b7c", fontSize: "0.8rem" }}>{open ? "▲" : "▼"}</span>
         </div>
@@ -249,11 +250,20 @@ function CV() {
           .mobile-nav { display: flex !important; }
           .edu-grid { grid-template-columns: 1fr !important; }
           .edu-img { display: block; margin: 1.5rem auto 0; width: 60% !important; }
+          .cv-hero { padding: 2rem 1.5rem !important; }
+          .cv-main-content { padding: 0 1.5rem 3rem !important; }
+          .contact-grid { grid-template-columns: 1fr !important; padding: 2rem 1.5rem !important; }
         }
 
         @media (max-width: 600px) {
           .about-grid { grid-template-columns: 1fr !important; }
           .about-img { display: block; margin: 1.5rem auto 0; width: 180px !important; }
+          .cv-hero { padding: 1.5rem 1rem !important; }
+          .cv-main-content { padding: 0 1rem 3rem !important; }
+          .cv-card-header { flex-direction: column !important; gap: 0.3rem !important; }
+          .cv-card-meta { text-align: left !important; }
+          .contact-grid { grid-template-columns: 1fr !important; padding: 1.5rem 1rem !important; }
+          .edu-img { width: 80% !important; }
         }
       `}</style>
 
@@ -339,7 +349,7 @@ function CV() {
       <main className="main-content" style={{ marginLeft: "200px", paddingTop: "52px" }}>
 
         {/* Hero */}
-        <section style={{
+        <section className="cv-hero" style={{
           background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%)",
           padding: "2.5rem 4rem",
           position: "relative", overflow: "hidden",
@@ -352,10 +362,9 @@ function CV() {
           <div style={{ position: "relative", textAlign: "left" }}>
             <h1 className="fade-up" style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: "clamp(2.2rem, 5vw, 3.4rem)",
+              fontSize: "clamp(2rem, 6vw, 3.4rem)",
               fontWeight: 700, color: "#fff", lineHeight: 1.15,
               marginBottom: "0.9rem", letterSpacing: "-0.02em",
-              whiteSpace: "nowrap",
             }}>
               Marianne Guilbard
             </h1>
@@ -369,7 +378,7 @@ function CV() {
           </div>
         </section>
 
-        <div style={{ padding: "0 4rem 4rem" }}>
+        <div className="cv-main-content" style={{ padding: "0 4rem 4rem" }}>
 
         {/* About */}
       <section id="about" style={{ paddingTop: "4rem" }}>
@@ -589,7 +598,7 @@ function CV() {
           {/* Contact */}
           <section id="contact" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
             <SectionTitle>Contact</SectionTitle>
-            <div style={{ background: "#1a1a2e", padding: "3rem", borderRadius: "2px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+            <div className="contact-grid" style={{ background: "#1a1a2e", padding: "3rem", borderRadius: "2px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
               <div>
                 <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.4rem", fontWeight: 700, color: "#fff", marginBottom: "0.8rem" }}>
                   Open to Postdoctoral Opportunities
