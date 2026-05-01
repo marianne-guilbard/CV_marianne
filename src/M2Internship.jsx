@@ -229,11 +229,11 @@ export default function M2Internship() {
             <p style={{ fontFamily: "Georgia, serif", fontSize: "1rem", lineHeight: 1.8, color: "#333", marginBottom: "0.8rem" }}>
               The complete internship report is available here:
             </p>
-            <a href="https://github.com/marianne-guilbard/marianne-cv/raw/main/M2%20report%20-%20marianne%20guilbard.pdf"
-              target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "Georgia, serif", fontSize: "0.9rem", color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>
-              ↓ Download M2 Internship Report (PDF)
-            </a>
+          <a href={`${import.meta.env.BASE_URL}M2 report - marianne guilbard.pdf`}
+            target="_blank" rel="noopener noreferrer"
+            style={{ fontFamily: "Georgia, serif", fontSize: "0.9rem", color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>
+            ↓ Download M2 Internship Report (PDF)
+          </a>
           </div>
 
           <hr style={{ border: "none", borderTop: "1px solid #dde0d8", margin: "2.5rem 0" }} />
