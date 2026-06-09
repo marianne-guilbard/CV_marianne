@@ -97,14 +97,14 @@ function ResearchCard({ emoji, title, institution, supervisor, supervisorLink, p
           </p>
           {supervisor && (
             <p style={{ fontSize: "0.95rem", color: "#666", marginBottom: "0.3rem", fontFamily: "Georgia, serif" }}>
-              Supervisor: <a href={supervisorLink} target="_blank" rel="noopener noreferrer" style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{supervisor}</a>
+              Supervisor: <a href={supervisorLink} target="_blank" rel="noopener noreferrer" style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{supervisor} ↗</a>
             </p>
           )}
           {project && (
             <p style={{ fontSize: "0.95rem", color: "#666", fontFamily: "Georgia, serif" }}>
               Project:{" "}
               {projectLink
-                ? <Link to={projectLink} style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{project}</Link>
+                ? <Link to={projectLink} style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{project} ↗</Link>
                 : <span style={{ color: "#444" }}>{project}</span>
               }
             </p>
