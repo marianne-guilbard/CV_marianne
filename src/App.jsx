@@ -156,15 +156,16 @@ function PubCard({ title, href, badge }) {
           <a href={href} target="_blank" rel="noopener noreferrer" style={{
             fontFamily: "Georgia, serif",
             fontSize: "0.96rem",
-            color: "#1a1a2e",
-            textDecoration: "none",
+            color: "#2a6b7c",
+            textDecoration: "underline",
+            textDecorationColor: "#2a6b7c",
+            textUnderlineOffset: "3px",
             lineHeight: 1.5,
-            borderBottom: "1px solid transparent",
-            transition: "border-color 0.2s, color 0.2s",
+            transition: "color 0.2s, opacity 0.2s",
           }}
-          onMouseEnter={e => { e.currentTarget.style.color = "#2a6b7c"; e.currentTarget.style.borderBottomColor = "#2a6b7c"; }}
-          onMouseLeave={e => { e.currentTarget.style.color = "#1a1a2e"; e.currentTarget.style.borderBottomColor = "transparent"; }}
-          >{title}</a>
+          onMouseEnter={e => { e.currentTarget.style.opacity = "0.75"; }}
+          onMouseLeave={e => { e.currentTarget.style.opacity = "1"; }}
+          >{title} ↗</a>
         ) : (
           <span style={{
             fontFamily: "Georgia, serif",
