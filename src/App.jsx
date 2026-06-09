@@ -141,7 +141,7 @@ function AwardCard({ year, title, org, detail }) {
   );
 }
 
-function PubCard({ title, href }) {
+function PubCard({ title, href, badge }) {
   return (
     <div style={{
       padding: "1rem 0",
@@ -151,18 +151,45 @@ function PubCard({ title, href }) {
       alignItems: "flex-start",
     }}>
       <span style={{ color: "#2a6b7c", fontSize: "1rem", marginTop: "0.1rem", flexShrink: 0 }}>📄</span>
-      <a href={href} target="_blank" rel="noopener noreferrer" style={{
-        fontFamily: "Georgia, serif",
-        fontSize: "0.96rem",
-        color: "#1a1a2e",
-        textDecoration: "none",
-        lineHeight: 1.5,
-        borderBottom: "1px solid transparent",
-        transition: "border-color 0.2s, color 0.2s",
-      }}
-      onMouseEnter={e => { e.currentTarget.style.color = "#2a6b7c"; e.currentTarget.style.borderBottomColor = "#2a6b7c"; }}
-      onMouseLeave={e => { e.currentTarget.style.color = "#1a1a2e"; e.currentTarget.style.borderBottomColor = "transparent"; }}
-      >{title}</a>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap", flex: 1 }}>
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer" style={{
+            fontFamily: "Georgia, serif",
+            fontSize: "0.96rem",
+            color: "#1a1a2e",
+            textDecoration: "none",
+            lineHeight: 1.5,
+            borderBottom: "1px solid transparent",
+            transition: "border-color 0.2s, color 0.2s",
+          }}
+          onMouseEnter={e => { e.currentTarget.style.color = "#2a6b7c"; e.currentTarget.style.borderBottomColor = "#2a6b7c"; }}
+          onMouseLeave={e => { e.currentTarget.style.color = "#1a1a2e"; e.currentTarget.style.borderBottomColor = "transparent"; }}
+          >{title}</a>
+        ) : (
+          <span style={{
+            fontFamily: "Georgia, serif",
+            fontSize: "0.96rem",
+            color: "#1a1a2e",
+            lineHeight: 1.5,
+          }}>{title}</span>
+        )}
+        {badge && (
+          <span style={{
+            fontSize: "0.68rem",
+            fontFamily: "monospace",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#2a6b7c",
+            border: "1px solid #2a6b7c",
+            borderRadius: "2px",
+            padding: "0.15rem 0.5rem",
+            whiteSpace: "nowrap",
+            flexShrink: 0,
+          }}>
+            {badge}
+          </span>
+        )}
+      </div>
     </div>
   );
 }
@@ -455,6 +482,10 @@ function CV() {
           {/* Publications */}
           <section id="publications" style={{ paddingTop: "4rem" }}>
             <SectionTitle>Publications</SectionTitle>
+             <PubCard
+              title="Complementary intra- and extracellular AGR2 activities support epithelial ovarian cancer cell aggressiveness"
+              badge="Under Review"
+            />
             <PubCard title="PhD Thesis — Study of the functions of the secreted protein disulfide isomerase, AGR2, in tumor adaptation" href="https://theses.hal.science/tel-05558177" />
             <PubCard title="Modulation of PDI Functions by Localization: The Example of the Anterior Gradient Family" href="https://doi.org/10.1089/ars.2024.0561" />
             <PubCard title="Endoplasmic Reticulum Homeostasis — From Molecules to Organisms: Report on the 14th International Calreticulin Workshop" href="https://doi.org/10.1111/jcmm.17840" />
