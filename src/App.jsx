@@ -71,7 +71,7 @@ function Tag({ children }) {
   );
 }
 
-function ResearchCard({ emoji, title, institution, supervisor, supervisorLink, project, projectLink, period }) {
+function ResearchCard({ emoji, title, institution, supervisor, supervisorLink, projectDescription, projectLink, period }) {
   return (
     <div style={{
       background: "#fff",
@@ -95,18 +95,18 @@ function ResearchCard({ emoji, title, institution, supervisor, supervisorLink, p
           <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "1rem", color: "#4a5568", marginBottom: "0.5rem" }}>
             {institution}
           </p>
-          {supervisor && (
+          {projectDescription && (
             <p style={{ fontSize: "0.95rem", color: "#666", marginBottom: "0.3rem", fontFamily: "Georgia, serif" }}>
-              Supervisor: <a href={supervisorLink} target="_blank" rel="noopener noreferrer" style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{supervisor} ↗</a>
+              Project description:{" "}
+              {projectLink
+                ? <Link to={projectLink} style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{projectDescription} ↗</Link>
+                : <span style={{ color: "#444" }}>{projectDescription}</span>
+              }
             </p>
           )}
-          {project && (
+          {supervisor && (
             <p style={{ fontSize: "0.95rem", color: "#666", fontFamily: "Georgia, serif" }}>
-              Project:{" "}
-              {projectLink
-                ? <Link to={projectLink} style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{project} ↗</Link>
-                : <span style={{ color: "#444" }}>{project}</span>
-              }
+              Supervisor: <a href={supervisorLink} target="_blank" rel="noopener noreferrer" style={{ color: "#2a6b7c", textDecoration: "none", borderBottom: "1px solid #c0dde3" }}>{supervisor} ↗</a>
             </p>
           )}
         </div>
@@ -452,30 +452,30 @@ function CV() {
               emoji="🎓"
               title="PhD Position"
               institution="University of Bordeaux · Institut Bergonié · BRIC"
+              projectDescription="Study of the functions of the secreted protein disulfide isomerase, AGR2, in tumor adaptation"
+              projectLink="/phd-thesis"
               supervisor="Dr. Frédéric Delom"
               supervisorLink="https://www.researchgate.net/profile/Frederic-Delom"
-              project="Study of the functions of the secreted protein disulfide isomerase, AGR2, in tumor adaptation"
-              projectLink="/phd-thesis"
               period="02/23 – 02/26"
             />
             <ResearchCard
               emoji="🧫"
               title="Master 2 Internship"
               institution="University of Bordeaux · Institut Bergonié · BRIC"
+              projectDescription="Role of AGR2 in Therapy-Induced Senescence in Breast Cancer"
+              projectLink="/m2-internship"
               supervisor="Dr. Frédéric Delom"
               supervisorLink="https://www.researchgate.net/profile/Frederic-Delom"
-              project="Role of AGR2 in Therapy-Induced Senescence in Breast Cancer"
-              projectLink="/m2-internship"
               period="01/22 – 01/23"
             />
             <ResearchCard
               emoji="🧫"
               title="Master 1 Internship"
               institution="University of Grenoble Alpes · IAB"
+              projectDescription="Lysine methylation-based signalling in triple-negative breast cancer"
+              projectLink="/m1-internship"
               supervisor="Dr. Nicolas Reynoird"
               supervisorLink="https://www.researchgate.net/profile/Nicolas-Reynoird-2"
-              project="Lysine methylation-based signalling in triple-negative breast cancer"
-              projectLink="/m1-internship"
               period="03/21 – 07/21"
             />
           </section>
