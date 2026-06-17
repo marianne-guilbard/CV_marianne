@@ -424,6 +424,9 @@ function CV() {
             <p style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem", lineHeight: 1.8, color: "#333", marginBottom: "1rem" , textAlign: "justify"}}>
               I am especially interested in how stress-adaptive pathways shape cellular plasticity and functional remodelling in diseased tissues. More broadly, I aim to investigate how fundamental stress response mechanisms can be leveraged to better understand pathological progression and identify new points of therapeutic vulnerability.
             </p>
+            <p style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem", lineHeight: 1.8, color: "#333", marginBottom: "1rem" , textAlign: "justify"}}>
+              Alongside hands-on bench work, I have developed a strong interest in computational and omics-based approaches to dissect these mechanisms at scale: integrating transcriptomic, proteomic, and genomic data (TCGA, CCLE, label-free proteomics) to identify pathway signatures, correlate molecular features with clinical outcomes, and build multi-omics analysis pipelines in R. I enjoy moving between bench experiments and data-driven analysis, using each to inform and validate the other.
+            </p>
             <p style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem", lineHeight: 1.8, color: "#333" , textAlign: "justify"}}>
               I am currently <strong>seeking postdoctoral opportunities</strong> to expand my expertise, address new biological questions, and contribute to collaborative research environments.
             </p>
