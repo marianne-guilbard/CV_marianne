@@ -528,7 +528,7 @@ function CV() {
                   <div style={{ marginBottom: "0.8rem" }}><Tag>National</Tag></div>
                   <ConfEntry title="BRIC Scientific Seminar" venue="Bordeaux, France · January 2026" topic="Complementary intra- and extracellular activities of the protein disulfide isomerase AGR2 in tumorigenesis" />
                   <ConfEntry title="Biological and Medical Sciences Department Annual Day" venue="Bordeaux, France · December 2024" />
-                  <ConfEntry title="BRIC Scientific Seminar" venue="Bordeaux, France · December 2026" topic="Endoplasmic reticulum proteostasis in high grade serous ovarian cancer" />
+                  <ConfEntry title="BRIC Scientific Seminar" venue="Bordeaux, France · December 2025" topic="Endoplasmic reticulum proteostasis in high grade serous ovarian cancer" />
                 </div>
               </div>
             </div>
