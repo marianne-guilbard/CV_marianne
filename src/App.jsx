@@ -496,7 +496,7 @@ function CV() {
             <SectionTitle>Publications</SectionTitle>
              <PubCard
               title="Complementary intra- and extracellular AGR2 activities support epithelial ovarian cancer cell aggressiveness"
-              badge="Under Review"
+              badge="Sumbitted to Oncogene"
             />
             <PubCard title="PhD Thesis — Study of the functions of the secreted protein disulfide isomerase, AGR2, in tumor adaptation" href="https://theses.hal.science/tel-05558177" />
             <PubCard title="Modulation of PDI Functions by Localization: The Example of the Anterior Gradient Family" href="https://doi.org/10.1089/ars.2024.0561" />
