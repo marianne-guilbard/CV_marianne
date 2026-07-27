@@ -9,9 +9,9 @@ import { buildPhDProject, buildM2Project, buildM1Project } from "./researchProje
 
 const NAV_ITEMS = [
   { id: "about", label: "About" },
+  { id: "publications", label: "Publications" },
   { id: "research", label: "Research" },
   { id: "funding", label: "Funding" },
-  { id: "publications", label: "Publications" },
   { id: "conferences", label: "Conferences" },
   { id: "teaching", label: "Teaching" },
   { id: "education", label: "Education" },
@@ -473,7 +473,7 @@ function CV() {
             <PubCard title="Modulation of PDI Functions by Localization: The Example of the Anterior Gradient Family" href="https://doi.org/10.1089/ars.2024.0561" />
             <PubCard title="Endoplasmic Reticulum Homeostasis — From Molecules to Organisms: Report on the 14th International Calreticulin Workshop" href="https://doi.org/10.1111/jcmm.17840" />
           </section>
-          
+
           {/* Research */}
           <section id="research" style={{ paddingTop: "4rem" }}>
             <SectionTitle>Research Experience</SectionTitle>
