@@ -11,12 +11,105 @@ const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "publications", label: "Publications" },
   { id: "research", label: "Research" },
+  { id: "skills", label: "Technical skills" },
   { id: "funding", label: "Funding" },
   { id: "conferences", label: "Conferences" },
   { id: "teaching", label: "Teaching" },
   { id: "education", label: "Education" },
   { id: "beyond", label: "Beyond Research" },
   { id: "contact", label: "Contact" },
+];
+
+const SKILLS_DATA = [
+  {
+    id: "wetlab",
+    icon: "🧫",
+    title: "Wet Lab Techniques",
+    groups: [
+      { label: "Cell Models", items: [
+        "Ovarian cancer: SKOV3, OVCAR3",
+        "Colorectal cancer: RKO, LS174T, HCT116, HT29",
+        "Lung cancer: A549",
+        "Breast cancer: MCF7, MDA-MB-231",
+        "293T cells",
+        "Patient-derived tumor organoids (PDTOs)",
+      ]},
+      { label: "Cell & Genetic Engineering", items: [
+        "Stable lentiviral cell engineering",
+        "Lentiviral production & transduction",
+        "CRISPR/Cas9",
+        "Lipid-mediated transfection",
+        "Site-directed mutagenesis",
+      ]},
+      { label: "Molecular Cloning", items: [
+        "Restriction cloning", "Gibson assembly", "Gateway cloning",
+        "Bacterial transformation", "Plasmid purification",
+      ]},
+      { label: "DNA Analysis", items: [
+        "NanoDrop spectrophotometry", "Restriction digestion",
+        "Agarose gel electrophoresis", "Sanger sequencing",
+      ]},
+      { label: "Protein Biochemistry", items: [
+        "FPLC-based recombinant protein purification",
+        "Recombinant AGR2 production & purification",
+        "Co-immunoprecipitation", "Western blotting", "Bradford assay",
+      ]},
+      { label: "Functional Assays", items: [
+        "Cell proliferation assays", "Wound-healing assay",
+        "Puromycin incorporation assay (SUnSET)",
+        "Dose–response & IC50 determination",
+        "Senescence-associated β-galactosidase staining",
+      ]},
+      { label: "Secretome & Immunoassays", items: [
+        "Gyrolab automated immunoassay",
+        "Conditioned medium protein precipitation",
+        "Immunohistochemistry (IHC)", "RT-qPCR",
+      ]},
+      { label: "Cell Sorting", items: ["FACS"] },
+    ],
+  },
+  {
+    id: "imaging",
+    icon: "🔬",
+    title: "Imaging & Microscopy",
+    groups: [
+      { label: "Microscopy Techniques", items: [
+        "Immunofluorescence microscopy", "Fluorescence microscopy", "High-content imaging",
+      ]},
+    ],
+  },
+  {
+    id: "computational",
+    icon: "💻",
+    title: "Computational / Bioinformatics",
+    groups: [
+      { label: "Proteomics", items: ["Label-free quantitative proteomics (nanoLC-MS/MS)"] },
+      { label: "Transcriptomics & Genomics", items: [
+        "Pan-cancer transcriptomic analyses (TCGA, GTEx, CCLE, Human Protein Atlas)",
+        "EMT-state classification from transcriptomic signatures",
+        "Integrative genomic/epigenomic analyses (somatic mutation, CNV, promoter methylation)",
+      ]},
+      { label: "Pathway & Functional Enrichment", items: [
+        "Gene set enrichment analysis (GSEA, ssGSEA)",
+        "Ontology-based interpretation (GO:BP, GO:CC)",
+        "Network-based visualization (Cytoscape, ClueGO)",
+      ]},
+      { label: "Multi-omics Integration", items: ["Multi-omics data integration and visualization in R"] },
+    ],
+  },
+  {
+    id: "dataanalysis",
+    icon: "📊",
+    title: "Data Analysis Tools",
+    groups: [
+      { label: "Statistics", items: [
+        "Gene correlation analyses (Pearson/Spearman)",
+        "Kaplan–Meier survival curves",
+        "Statistical analysis (GraphPad Prism)",
+      ]},
+      { label: "Software", items: ["R", "GraphPad Prism", "Cytoscape", "ClueGO"] },
+    ],
+  },
 ];
 
 function useActiveSection() {
@@ -260,10 +353,87 @@ function EduCard({ degree, institution, years, description, link }) {
   );
 }
 
+function SkillCategoryCard({ icon, title, count, onClick }) {
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        background: "#fff",
+        border: "1px solid #dde6e8",
+        borderLeft: "3px solid #2a6b7c",
+        borderRadius: "2px",
+        padding: "1.6rem",
+        cursor: "pointer",
+        transition: "box-shadow 0.2s, transform 0.15s",
+      }}
+      onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(42,107,124,0.12)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+      onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}
+    >
+      <div style={{ fontSize: "1.8rem", marginBottom: "0.6rem" }}>{icon}</div>
+      <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.05rem", fontWeight: 700, color: "#1a1a2e", marginBottom: "0.3rem" }}>{title}</h3>
+      <span style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.8rem", color: "#2a6b7c" }}>{count} techniques →</span>
+    </div>
+  );
+}
+
+function SkillsModal({ category, onClose }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 200,
+        background: "rgba(26,26,46,0.6)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: "2rem",
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          background: "#f7f5f0",
+          maxWidth: "640px", width: "100%",
+          maxHeight: "80vh", overflowY: "auto",
+          borderRadius: "3px",
+          padding: "2rem 2.2rem",
+          position: "relative",
+        }}
+      >
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute", top: "1.2rem", right: "1.2rem",
+            background: "none", border: "none", cursor: "pointer",
+            fontSize: "1.3rem", color: "#666",
+          }}
+        >✕</button>
+        <div style={{ fontSize: "1.8rem", marginBottom: "0.4rem" }}>{category.icon}</div>
+        <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.5rem", fontWeight: 700, color: "#1a1a2e", marginBottom: "1.4rem" }}>{category.title}</h2>
+        {category.groups.map(group => (
+          <div key={group.label} style={{ marginBottom: "1.4rem" }}>
+            <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2a6b7c", marginBottom: "0.6rem" }}>{group.label}</div>
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              {group.items.map(item => (
+                <li key={item} style={{
+                  fontFamily: "Georgia, serif", fontSize: "0.92rem", color: "#333",
+                  padding: "0.4rem 0", borderBottom: "1px solid #eef0f2",
+                  display: "flex", gap: "0.5rem",
+                }}>
+                  <span style={{ color: "#2a6b7c" }}>▸</span>{item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function CV() {
   const active = useActiveSection();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
+  const [activeSkillCategory, setActiveSkillCategory] = useState(null);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -473,7 +643,7 @@ function CV() {
             <PubCard title="Modulation of PDI Functions by Localization: The Example of the Anterior Gradient Family" href="https://doi.org/10.1089/ars.2024.0561" />
             <PubCard title="Endoplasmic Reticulum Homeostasis — From Molecules to Organisms: Report on the 14th International Calreticulin Workshop" href="https://doi.org/10.1111/jcmm.17840" />
           </section>
-
+          
           {/* Research */}
           <section id="research" style={{ paddingTop: "4rem" }}>
             <SectionTitle>Research Experience</SectionTitle>
@@ -503,6 +673,27 @@ function CV() {
             />
           </section>
 
+          {/* Skills */}
+          <section id="skills" style={{ paddingTop: "4rem" }}>
+            <SectionTitle>Technical Skills</SectionTitle>
+            <p style={{
+              fontFamily: "Georgia, serif", fontSize: "0.92rem", fontStyle: "italic",
+              color: "#666", marginBottom: "1.6rem", lineHeight: 1.7,
+            }}>
+              Click on a category below to access a detailed overview of the techniques and methods performed throughout my research projects.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.2rem" }}>
+              {SKILLS_DATA.map(cat => (
+                <SkillCategoryCard
+                  key={cat.id}
+                  icon={cat.icon}
+                  title={cat.title}
+                  count={cat.groups.reduce((sum, g) => sum + g.items.length, 0)}
+                  onClick={() => setActiveSkillCategory(cat)}
+                />
+              ))}
+            </div>
+          </section>
 
           {/* Funding */}
           <section id="funding" style={{ paddingTop: "4rem" }}>
@@ -681,6 +872,9 @@ function CV() {
 
       {activeProject && (
         <ResearchDetailModal project={activeProject} onClose={() => setActiveProject(null)} />
+      )}
+      {activeSkillCategory && (
+        <SkillsModal category={activeSkillCategory} onClose={() => setActiveSkillCategory(null)} />
       )}
     </div>
   );
