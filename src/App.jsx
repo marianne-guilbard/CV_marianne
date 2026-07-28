@@ -22,11 +22,31 @@ const NAV_ITEMS = [
 
 const SKILLS_DATA = [
   {
-    id: "wetlab",
-    icon: "🧫",
-    title: "Wet Lab Techniques",
+    id: "molbio",
+    icon: "🧬",
+    title: "Molecular Biology & Protein Biochemistry",
     groups: [
-      { label: "Cell Models", items: [
+      { label: "Protein Analysis", items: [
+        "Western blotting",
+        "Co-immunoprecipitation",
+      ]},
+      { label: "Molecular Biology", items: [
+        "RT-qPCR",
+        "Molecular cloning",
+      ]},
+      { label: "Recombinant Protein & Secretome", items: [
+        "Recombinant protein production and purification (FPLC)",
+        "Conditioned medium protein precipitation and secretome analysis",
+        "Automated immunoassays (Gyrolab)",
+      ]},
+    ],
+  },
+  {
+    id: "cellbio",
+    icon: "🧫",
+    title: "Cell Biology & Experimental Models",
+    groups: [
+      { label: "Cell Lines & Models", items: [
         "Ovarian cancer: SKOV3, OVCAR3",
         "Colorectal cancer: RKO, LS174T, HCT116, HT29",
         "Lung cancer: A549",
@@ -34,80 +54,80 @@ const SKILLS_DATA = [
         "293T cells",
         "Patient-derived tumor organoids (PDTOs)",
       ]},
-      { label: "Cell & Genetic Engineering", items: [
-        "Stable lentiviral cell engineering",
-        "Lentiviral production & transduction",
-        "CRISPR/Cas9",
-        "Lipid-mediated transfection",
-        "Site-directed mutagenesis",
+      { label: "Cell Culture & Engineering", items: [
+        "Mammalian and bacterial cell culture",
+        "Stable lentiviral production and transduction",
       ]},
-      { label: "Molecular Cloning", items: [
-        "Restriction cloning", "Gibson assembly", "Gateway cloning",
-        "Bacterial transformation", "Plasmid purification",
+      { label: "Imaging & Sorting", items: [
+        "Immunofluorescence microscopy",
+        "Fluorescence-activated cell sorting (FACS)",
       ]},
-      { label: "DNA Analysis", items: [
-        "NanoDrop spectrophotometry", "Restriction digestion",
-        "Agarose gel electrophoresis", "Sanger sequencing",
-      ]},
-      { label: "Protein Biochemistry", items: [
-        "FPLC-based recombinant protein purification",
-        "Recombinant AGR2 production & purification",
-        "Co-immunoprecipitation", "Western blotting", "Bradford assay",
-      ]},
-      { label: "Functional Assays", items: [
-        "Cell proliferation assays", "Wound-healing assay",
-        "Puromycin incorporation assay (SUnSET)",
-        "Dose–response & IC50 determination",
-        "Senescence-associated β-galactosidase staining",
-      ]},
-      { label: "Secretome & Immunoassays", items: [
-        "Gyrolab automated immunoassay",
-        "Conditioned medium protein precipitation",
-        "Immunohistochemistry (IHC)", "RT-qPCR",
-      ]},
-      { label: "Cell Sorting", items: ["FACS"] },
     ],
   },
   {
-    id: "imaging",
-    icon: "🔬",
-    title: "Imaging & Microscopy",
+    id: "assays",
+    icon: "🧪",
+    title: "Functional & Phenotypic Assays",
     groups: [
-      { label: "Microscopy Techniques", items: [
-        "Immunofluorescence microscopy", "Fluorescence microscopy", "High-content imaging",
+      { label: "Proliferation & Migration", items: [
+        "Cell proliferation assays",
+        "Scratch (wound healing) assays",
+      ]},
+      { label: "Protein Synthesis & Senescence", items: [
+        "SUnSET assay (puromycin incorporation)",
+        "Senescence-associated β-galactosidase assay",
+      ]},
+      { label: "Functional & Pharmacological Assays", items: [
+        "Antibody-based functional assays",
+        "Dose-response and IC50 determination assays",
+        "Autophagic flux inhibition assays",
       ]},
     ],
   },
   {
-    id: "computational",
+    id: "bioinformatics",
     icon: "💻",
-    title: "Computational / Bioinformatics",
+    title: "Bioinformatics & Multi-omics Analysis",
     groups: [
-      { label: "Proteomics", items: ["Label-free quantitative proteomics (nanoLC-MS/MS)"] },
-      { label: "Transcriptomics & Genomics", items: [
-        "Pan-cancer transcriptomic analyses (TCGA, GTEx, CCLE, Human Protein Atlas)",
-        "EMT-state classification from transcriptomic signatures",
-        "Integrative genomic/epigenomic analyses (somatic mutation, CNV, promoter methylation)",
+      { label: "Proteomics", items: [
+        "Label-free quantitative proteomics (nanoLC-MS/MS)",
       ]},
-      { label: "Pathway & Functional Enrichment", items: [
+      { label: "Transcriptomics & Pathway Analysis", items: [
+        "Transcriptomic analyses (TCGA, GTEx, CCLE)",
         "Gene set enrichment analysis (GSEA, ssGSEA)",
-        "Ontology-based interpretation (GO:BP, GO:CC)",
-        "Network-based visualization (Cytoscape, ClueGO)",
+        "Functional enrichment and network analysis (GO, Cytoscape, ClueGO)",
       ]},
-      { label: "Multi-omics Integration", items: ["Multi-omics data integration and visualization in R"] },
+      { label: "Survival & Integration", items: [
+        "Survival analysis (Kaplan–Meier)",
+        "Multi-omics data integration and visualization in R",
+      ]},
     ],
   },
   {
-    id: "dataanalysis",
-    icon: "📊",
-    title: "Data Analysis Tools",
+    id: "imageanalysis",
+    icon: "🔬",
+    title: "Image Analysis & Visualization",
     groups: [
-      { label: "Statistics", items: [
-        "Gene correlation analyses (Pearson/Spearman)",
-        "Kaplan–Meier survival curves",
-        "Statistical analysis (GraphPad Prism)",
+      { label: "Software", items: [
+        "ImageJ",
+        "QuPath",
+        "LAS X (Leica)",
+        "Cytoscape",
+        "M3Vision",
       ]},
-      { label: "Software", items: ["R", "GraphPad Prism", "Cytoscape", "ClueGO"] },
+    ],
+  },
+  {
+    id: "software",
+    icon: "📊",
+    title: "Software & Data Analysis",
+    groups: [
+      { label: "Tools", items: [
+        "R / RStudio",
+        "GraphPad Prism",
+        "GitHub",
+        "Zotero",
+      ]},
     ],
   },
 ];
@@ -423,7 +443,14 @@ function SkillsTabs({ categories }) {
                 <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2a6b7c", marginBottom: "0.6rem" }}>{group.label}</div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {group.items.map(item => (
-                    <li key={item} style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#333", padding: "0.3rem 0", display: "flex", gap: "0.5rem" }}>
+                    <li key={item} style={{
+                      fontFamily: "Georgia, serif",
+                      fontSize: "0.88rem",
+                      color: "#333",
+                      padding: "0.3rem 0",
+                      display: "flex",
+                      gap: "0.5rem",
+                    }}>
                       <span style={{ color: "#2a6b7c" }}>▸</span>{item}
                     </li>
                   ))}
