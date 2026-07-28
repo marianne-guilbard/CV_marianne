@@ -395,28 +395,42 @@ function SkillsTabs({ categories }) {
 
       {active && (
         <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "1.6rem 2rem",
+          background: "#fff",
+          border: "1px solid #dde6e8",
+          borderLeft: "3px solid #2a6b7c",
+          borderRadius: "2px",
+          padding: "1.6rem 1.8rem",
         }}>
-          {active.groups.map(group => (
-            <div key={group.label} style={{
-              background: "#fff",
-              border: "1px solid #dde6e8",
-              borderLeft: "3px solid #2a6b7c",
-              borderRadius: "2px",
-              padding: "1.2rem 1.4rem",
-            }}>
-              <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2a6b7c", marginBottom: "0.6rem" }}>{group.label}</div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {group.items.map(item => (
-                  <li key={item} style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#333", padding: "0.3rem 0", display: "flex", gap: "0.5rem" }}>
-                    <span style={{ color: "#2a6b7c" }}>▸</span>{item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <h3 style={{
+            fontFamily: "'Playfair Display', Georgia, serif",
+            fontSize: "1.15rem",
+            fontWeight: 700,
+            color: "#1a1a2e",
+            marginBottom: "1.4rem",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.6rem",
+          }}>
+            <span style={{ fontSize: "1.3rem" }}>{active.icon}</span>{active.title}
+          </h3>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "1.6rem 2rem",
+          }}>
+            {active.groups.map(group => (
+              <div key={group.label}>
+                <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2a6b7c", marginBottom: "0.6rem" }}>{group.label}</div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {group.items.map(item => (
+                    <li key={item} style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#333", padding: "0.3rem 0", display: "flex", gap: "0.5rem" }}>
+                      <span style={{ color: "#2a6b7c" }}>▸</span>{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
