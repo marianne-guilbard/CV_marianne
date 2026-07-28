@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "publications", label: "Publications" },
   { id: "research", label: "Research" },
-  { id: "skills", label: "Technical skills" },
+  { id: "skills", label: "Skills" },
   { id: "funding", label: "Funding" },
   { id: "conferences", label: "Conferences" },
   { id: "teaching", label: "Teaching" },
@@ -353,78 +353,59 @@ function EduCard({ degree, institution, years, description, link }) {
   );
 }
 
-function SkillCategoryCard({ icon, title, count, onClick }) {
+function SkillsAccordion({ categories }) {
+  const [openId, setOpenId] = useState(categories[0]?.id ?? null);
   return (
-    <div
-      onClick={onClick}
-      style={{
-        background: "#fff",
-        border: "1px solid #dde6e8",
-        borderLeft: "3px solid #2a6b7c",
-        borderRadius: "2px",
-        padding: "1.6rem",
-        cursor: "pointer",
-        transition: "box-shadow 0.2s, transform 0.15s",
-      }}
-      onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(42,107,124,0.12)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-      onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}
-    >
-      <div style={{ fontSize: "1.8rem", marginBottom: "0.6rem" }}>{icon}</div>
-      <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.05rem", fontWeight: 700, color: "#1a1a2e", marginBottom: "0.3rem" }}>{title}</h3>
-      <span style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.8rem", color: "#2a6b7c" }}>{count} techniques →</span>
-    </div>
-  );
-}
-
-function SkillsModal({ category, onClose }) {
-  return (
-    <div
-      onClick={onClose}
-      style={{
-        position: "fixed", inset: 0, zIndex: 200,
-        background: "rgba(26,26,46,0.6)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        padding: "2rem",
-      }}
-    >
-      <div
-        onClick={e => e.stopPropagation()}
-        style={{
-          background: "#f7f5f0",
-          maxWidth: "640px", width: "100%",
-          maxHeight: "80vh", overflowY: "auto",
-          borderRadius: "3px",
-          padding: "2rem 2.2rem",
-          position: "relative",
-        }}
-      >
-        <button
-          onClick={onClose}
-          style={{
-            position: "absolute", top: "1.2rem", right: "1.2rem",
-            background: "none", border: "none", cursor: "pointer",
-            fontSize: "1.3rem", color: "#666",
-          }}
-        >✕</button>
-        <div style={{ fontSize: "1.8rem", marginBottom: "0.4rem" }}>{category.icon}</div>
-        <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.5rem", fontWeight: 700, color: "#1a1a2e", marginBottom: "1.4rem" }}>{category.title}</h2>
-        {category.groups.map(group => (
-          <div key={group.label} style={{ marginBottom: "1.4rem" }}>
-            <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2a6b7c", marginBottom: "0.6rem" }}>{group.label}</div>
-            <ul style={{ listStyle: "none", padding: 0 }}>
-              {group.items.map(item => (
-                <li key={item} style={{
-                  fontFamily: "Georgia, serif", fontSize: "0.92rem", color: "#333",
-                  padding: "0.4rem 0", borderBottom: "1px solid #eef0f2",
-                  display: "flex", gap: "0.5rem",
-                }}>
-                  <span style={{ color: "#2a6b7c" }}>▸</span>{item}
-                </li>
-              ))}
-            </ul>
+    <div>
+      {categories.map(cat => {
+        const isOpen = openId === cat.id;
+        return (
+          <div key={cat.id} style={{
+            background: "#fff",
+            border: "1px solid #dde6e8",
+            borderLeft: "3px solid #2a6b7c",
+            borderRadius: "2px",
+            marginBottom: "1rem",
+            overflow: "hidden",
+          }}>
+            <div
+              onClick={() => setOpenId(isOpen ? null : cat.id)}
+              style={{
+                padding: "1.1rem 1.4rem",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "1rem",
+                background: isOpen ? "#f4f9fa" : "#fff",
+                transition: "background 0.2s",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
+                <span style={{ fontSize: "1.3rem" }}>{cat.icon}</span>
+                <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.05rem", fontWeight: 700, color: "#1a1a2e" }}>{cat.title}</span>
+              </div>
+              <span style={{ color: "#2a6b7c", fontSize: "0.8rem" }}>{isOpen ? "▲" : "▼"}</span>
+            </div>
+            {isOpen && (
+              <div style={{ padding: "0 1.4rem 1.2rem", borderTop: "1px solid #eef0f2" }}>
+                {cat.groups.map(group => (
+                  <div key={group.label} style={{ marginTop: "1rem" }}>
+                    <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2a6b7c", marginBottom: "0.5rem" }}>{group.label}</div>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                      {group.items.map(item => (
+                        <li key={item} style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#333", padding: "0.3rem 0", display: "flex", gap: "0.5rem" }}>
+                          <span style={{ color: "#2a6b7c" }}>▸</span>{item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 }
@@ -433,7 +414,6 @@ function CV() {
   const active = useActiveSection();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
-  const [activeSkillCategory, setActiveSkillCategory] = useState(null);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -682,17 +662,7 @@ function CV() {
             }}>
               Click on a category below to access a detailed overview of the techniques and methods performed throughout my research projects.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.2rem" }}>
-              {SKILLS_DATA.map(cat => (
-                <SkillCategoryCard
-                  key={cat.id}
-                  icon={cat.icon}
-                  title={cat.title}
-                  count={cat.groups.reduce((sum, g) => sum + g.items.length, 0)}
-                  onClick={() => setActiveSkillCategory(cat)}
-                />
-              ))}
-            </div>
+            <SkillsAccordion categories={SKILLS_DATA} />
           </section>
 
           {/* Funding */}
@@ -872,9 +842,6 @@ function CV() {
 
       {activeProject && (
         <ResearchDetailModal project={activeProject} onClose={() => setActiveProject(null)} />
-      )}
-      {activeSkillCategory && (
-        <SkillsModal category={activeSkillCategory} onClose={() => setActiveSkillCategory(null)} />
       )}
     </div>
   );
