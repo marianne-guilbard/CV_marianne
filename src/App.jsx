@@ -353,59 +353,72 @@ function EduCard({ degree, institution, years, description, link }) {
   );
 }
 
-function SkillsAccordion({ categories }) {
-  const [openId, setOpenId] = useState(categories[0]?.id ?? null);
+function SkillsTabs({ categories }) {
+  const [activeId, setActiveId] = useState(categories[0]?.id ?? null);
+  const active = categories.find(c => c.id === activeId);
+
   return (
     <div>
-      {categories.map(cat => {
-        const isOpen = openId === cat.id;
-        return (
-          <div key={cat.id} style={{
-            background: "#fff",
-            border: "1px solid #dde6e8",
-            borderLeft: "3px solid #2a6b7c",
-            borderRadius: "2px",
-            marginBottom: "1rem",
-            overflow: "hidden",
-          }}>
-            <div
-              onClick={() => setOpenId(isOpen ? null : cat.id)}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+        gap: "1rem",
+        marginBottom: "2rem",
+      }}>
+        {categories.map(cat => {
+          const isActive = cat.id === activeId;
+          return (
+            <button
+              key={cat.id}
+              onClick={() => setActiveId(cat.id)}
               style={{
-                padding: "1.1rem 1.4rem",
+                background: isActive ? "#e8f4f6" : "#fff",
+                border: isActive ? "2px solid #2a6b7c" : "1px solid #dde6e8",
+                borderRadius: "4px",
+                padding: "1.4rem 1rem",
                 cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "1rem",
-                background: isOpen ? "#f4f9fa" : "#fff",
-                transition: "background 0.2s",
+                textAlign: "center",
+                transition: "background 0.15s, border-color 0.15s",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
-                <span style={{ fontSize: "1.3rem" }}>{cat.icon}</span>
-                <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.05rem", fontWeight: 700, color: "#1a1a2e" }}>{cat.title}</span>
-              </div>
-              <span style={{ color: "#2a6b7c", fontSize: "0.8rem" }}>{isOpen ? "▲" : "▼"}</span>
-            </div>
-            {isOpen && (
-              <div style={{ padding: "0 1.4rem 1.2rem", borderTop: "1px solid #eef0f2" }}>
-                {cat.groups.map(group => (
-                  <div key={group.label} style={{ marginTop: "1rem" }}>
-                    <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2a6b7c", marginBottom: "0.5rem" }}>{group.label}</div>
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                      {group.items.map(item => (
-                        <li key={item} style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#333", padding: "0.3rem 0", display: "flex", gap: "0.5rem" }}>
-                          <span style={{ color: "#2a6b7c" }}>▸</span>{item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <div style={{ fontSize: "1.8rem", marginBottom: "0.6rem" }}>{cat.icon}</div>
+              <div style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "0.85rem",
+                color: "#1a1a2e",
+                fontWeight: isActive ? 700 : 400,
+              }}>{cat.title}</div>
+            </button>
+          );
+        })}
+      </div>
+
+      {active && (
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "1.6rem 2rem",
+        }}>
+          {active.groups.map(group => (
+            <div key={group.label} style={{
+              background: "#fff",
+              border: "1px solid #dde6e8",
+              borderLeft: "3px solid #2a6b7c",
+              borderRadius: "2px",
+              padding: "1.2rem 1.4rem",
+            }}>
+              <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2a6b7c", marginBottom: "0.6rem" }}>{group.label}</div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {group.items.map(item => (
+                  <li key={item} style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#333", padding: "0.3rem 0", display: "flex", gap: "0.5rem" }}>
+                    <span style={{ color: "#2a6b7c" }}>▸</span>{item}
+                  </li>
                 ))}
-              </div>
-            )}
-          </div>
-        );
-      })}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -662,7 +675,7 @@ function CV() {
             }}>
               Click on a category below to access a detailed overview of the techniques and methods performed throughout my research projects.
             </p>
-            <SkillsAccordion categories={SKILLS_DATA} />
+            <SkillsTabs categories={SKILLS_DATA} />
           </section>
 
           {/* Funding */}
