@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import M1Internship from "./M1Internship.jsx";
 import M2Internship from "./M2Internship.jsx";
@@ -132,15 +132,19 @@ const SKILLS_DATA = [
   },
 ];
 
-function useScrolledPast(threshold = 180) {
-  const [scrolled, setScrolled] = useState(false);
+function useHeroVisible(ref) {
+  const [visible, setVisible] = useState(true);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > threshold);
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [threshold]);
-  return scrolled;
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { rootMargin: "-52px 0px 0px 0px" } // account for the fixed 52px header
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [ref]);
+  return visible;
 }
 
 function useActiveSection() {
@@ -175,6 +179,32 @@ function SectionTitle({ children }) {
       }}>{children}</h2>
       <div style={{ width: "3rem", height: "2px", background: "#2a6b7c" }} />
     </div>
+  );
+}
+
+function emojiToTwemojiCodepoint(emoji) {
+  return [...emoji]
+    .map(char => char.codePointAt(0))
+    .filter(cp => cp !== 0xfe0f) // drop the variation-selector, Twemoji filenames omit it
+    .map(cp => cp.toString(16))
+    .join("-");
+}
+
+function CategoryIcon({ emoji, size = 30 }) {
+  const codepoint = emojiToTwemojiCodepoint(emoji);
+  return (
+    <img
+      src={`https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/${codepoint}.svg`}
+      alt=""
+      width={size}
+      height={size}
+      style={{
+        display: "inline-block",
+        filter: "saturate(38%) brightness(1.08)",
+        opacity: 0.92,
+      }}
+      loading="lazy"
+    />
   );
 }
 
@@ -412,7 +442,7 @@ function SkillsTabs({ categories }) {
                 transition: "background 0.15s, border-color 0.15s",
               }}
             >
-              <div style={{ fontSize: "1.8rem", marginBottom: "0.6rem" }}>{cat.icon}</div>
+              <div style={{ marginBottom: "0.6rem", display: "flex", justifyContent: "center" }}><CategoryIcon emoji={cat.icon} size={30} /></div>
               <div style={{
                 fontFamily: "Georgia, serif",
                 fontSize: "0.85rem",
@@ -442,7 +472,7 @@ function SkillsTabs({ categories }) {
             alignItems: "center",
             gap: "0.6rem",
           }}>
-            <span style={{ fontSize: "1.3rem" }}>{active.icon}</span>{active.title}
+            <CategoryIcon emoji={active.icon} size={22} />{active.title}
           </h3>
           <div style={{
             display: "grid",
@@ -478,7 +508,8 @@ function SkillsTabs({ categories }) {
 function CV() {
   const active = useActiveSection();
   const [menuOpen, setMenuOpen] = useState(false);
-  const scrolledPastHero = useScrolledPast(180);
+  const heroRef = useRef(null);
+  const heroVisible = useHeroVisible(heroRef);
   const [activeProject, setActiveProject] = useState(null);
 
   const scrollTo = (id) => {
@@ -533,19 +564,33 @@ function CV() {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 2rem", height: "52px",
       }}>
-        <span style={{
-          fontFamily: "'Playfair Display', Georgia, serif",
-          fontSize: "1rem",
-          fontWeight: 700,
-          color: "#1a1a2e",
-          letterSpacing: "-0.01em",
-          opacity: scrolledPastHero ? 1 : 0,
-          transform: scrolledPastHero ? "translateY(0)" : "translateY(-6px)",
+        <div style={{
+          display: "flex",
+          alignItems: "baseline",
+          gap: "0.7rem",
+          opacity: heroVisible ? 0 : 1,
+          transform: heroVisible ? "translateY(-6px)" : "translateY(0)",
           transition: "opacity 0.3s ease, transform 0.3s ease",
           pointerEvents: "none",
         }}>
-          Marianne Guilbard
-        </span>
+          <span style={{
+            fontFamily: "'Playfair Display', Georgia, serif",
+            fontSize: "1rem",
+            fontWeight: 700,
+            color: "#1a1a2e",
+            letterSpacing: "-0.01em",
+          }}>
+            Marianne Guilbard
+          </span>
+          <span style={{
+            fontFamily: "'Source Serif 4', Georgia, serif",
+            fontSize: "0.75rem",
+            letterSpacing: "0.04em",
+            color: "#2a6b7c",
+          }}>
+            PhD · Life Sciences
+          </span>
+        </div>
         <button
           className="mobile-nav"
           onClick={() => setMenuOpen(o => !o)}
@@ -620,7 +665,7 @@ function CV() {
       <main className="main-content" style={{ marginLeft: "200px", paddingTop: "52px" }}>
 
         {/* Hero */}
-        <section className="cv-hero" style={{
+        <section className="cv-hero" ref={heroRef} style={{
           background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%)",
           padding: "2.5rem 4rem",
           position: "relative", overflow: "hidden",
