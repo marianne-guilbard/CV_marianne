@@ -52,7 +52,6 @@ const SKILLS_DATA = [
         "Lung cancer: A549",
         "Breast cancer: MCF7, MDA-MB-231",
         "293T cells",
-        "Patient-derived tumor organoids (PDTOs)",
       ]},
       { label: "Cell Culture & Engineering", items: [
         "Mammalian and bacterial cell culture",
@@ -596,7 +595,7 @@ function CV() {
       <nav className="sidebar" style={{
         position: "fixed", top: "52px", left: 0, bottom: 0, width: "200px",
         padding: "2.5rem 0 2rem 0",
-        borderRight: "1px solid #dde0d8",
+        borderRight: "1px solid #b3bcb2",
         background: "#f7f5f0",
         overflowY: "auto",
         zIndex: 50,
