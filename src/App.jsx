@@ -576,7 +576,7 @@ function CV() {
       {menuOpen && (
         <div style={{
           position: "fixed", top: "52px", left: 0, right: 0, zIndex: 99,
-          background: "#eee6d6", borderBottom: "1px solid #ddd0b8",
+          background: "#f7f5f0", borderBottom: "1px solid #dde0d8",
           padding: "0.5rem 0",
         }}>
           {NAV_ITEMS.map(({ id, label }) => (
@@ -585,7 +585,7 @@ function CV() {
               padding: "0.6rem 2rem",
               background: "none", border: "none", cursor: "pointer",
               fontFamily: "Georgia, serif", fontSize: "0.9rem",
-              color: active === id ? "#1a1a2e" : "#6b5f45",
+              color: active === id ? "#2a6b7c" : "#444",
               fontWeight: active === id ? 600 : 400,
             }}>{label}</button>
           ))}
@@ -596,13 +596,13 @@ function CV() {
       <nav className="sidebar" style={{
         position: "fixed", top: "52px", left: 0, bottom: 0, width: "200px",
         padding: "2.5rem 0 2rem 0",
-        borderRight: "1px solid #ddd0b8",
-        background: "#eee6d6",
+        borderRight: "1px solid #dde0d8",
+        background: "#f7f5f0",
         overflowY: "auto",
         zIndex: 50,
       }}>
-        <div style={{ padding: "0 1.5rem 1.5rem", borderBottom: "1px solid #ddd0b8", marginBottom: "1.5rem" }}>
-          <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#9c8a68" }}>Contents</div>
+        <div style={{ padding: "0 1.5rem 1.5rem", borderBottom: "1px solid #eef0f2", marginBottom: "1.5rem" }}>
+          <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#999" }}>Contents</div>
         </div>
         {NAV_ITEMS.map(({ id, label }) => (
           <button key={id} onClick={() => scrollTo(id)} style={{
@@ -610,14 +610,14 @@ function CV() {
             padding: "0.5rem 1.5rem",
             background: "none", border: "none", cursor: "pointer",
             fontFamily: "Georgia, serif", fontSize: "0.92rem",
-            color: active === id ? "#1a1a2e" : "#6b5f45",
+            color: active === id ? "#2a6b7c" : "#555",
             fontWeight: active === id ? 600 : 400,
             borderLeft: active === id ? "2px solid #2a6b7c" : "2px solid transparent",
             transition: "all 0.15s",
           }}>{label}</button>
         ))}
-        <div style={{ padding: "2rem 1.5rem 0", marginTop: "1rem", borderTop: "1px solid #ddd0b8" }}>
-          <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#9c8a68", marginBottom: "0.8rem" }}>Links</div>
+        <div style={{ padding: "2rem 1.5rem 0", marginTop: "1rem", borderTop: "1px solid #eef0f2" }}>
+          <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#999", marginBottom: "0.8rem" }}>Links</div>
           {[
             { label: "Google Scholar", href: "https://scholar.google.com/citations?user=8LgCwdwAAAAJ&hl=fr" },
             { label: "ResearchGate", href: "https://www.researchgate.net/profile/Marianne-Guilbard" },
