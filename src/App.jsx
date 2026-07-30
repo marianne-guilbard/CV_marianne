@@ -132,6 +132,17 @@ const SKILLS_DATA = [
   },
 ];
 
+function useScrolledPast(threshold = 180) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [threshold]);
+  return scrolled;
+}
+
 function useActiveSection() {
   const [active, setActive] = useState("about");
   useEffect(() => {
@@ -467,6 +478,7 @@ function SkillsTabs({ categories }) {
 function CV() {
   const active = useActiveSection();
   const [menuOpen, setMenuOpen] = useState(false);
+  const scrolledPastHero = useScrolledPast(180);
   const [activeProject, setActiveProject] = useState(null);
 
   const scrollTo = (id) => {
@@ -518,9 +530,22 @@ function CV() {
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         background: "rgba(247,245,240,0.96)", backdropFilter: "blur(8px)",
         borderBottom: "1px solid #dde0d8",
-        display: "flex", alignItems: "center", justifyContent: "flex-end",
+        display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 2rem", height: "52px",
       }}>
+        <span style={{
+          fontFamily: "'Playfair Display', Georgia, serif",
+          fontSize: "1rem",
+          fontWeight: 700,
+          color: "#1a1a2e",
+          letterSpacing: "-0.01em",
+          opacity: scrolledPastHero ? 1 : 0,
+          transform: scrolledPastHero ? "translateY(0)" : "translateY(-6px)",
+          transition: "opacity 0.3s ease, transform 0.3s ease",
+          pointerEvents: "none",
+        }}>
+          Marianne Guilbard
+        </span>
         <button
           className="mobile-nav"
           onClick={() => setMenuOpen(o => !o)}
