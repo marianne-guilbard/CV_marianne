@@ -712,10 +712,7 @@ function CV() {
           {/* Publications */}
           <section id="publications" style={{ paddingTop: "4rem" }}>
             <SectionTitle>Publications</SectionTitle>
-             <PubCard
-              title="Complementary intra- and extracellular AGR2 activities support epithelial ovarian cancer cell aggressiveness"
-              badge="ACCEPTED · ONCOGENE"
-            />
+            <PubCard title="Complementary intra- and extracellular AGR2 activities support epithelial ovarian cancer cell aggressiveness" href="https://www.nature.com/articles/s41388-026-03938-y" />
             <PubCard title="PhD Thesis — Study of the functions of the secreted protein disulfide isomerase, AGR2, in tumor adaptation" href="https://theses.hal.science/tel-05558177" />
             <PubCard title="Modulation of PDI Functions by Localization: The Example of the Anterior Gradient Family" href="https://doi.org/10.1089/ars.2024.0561" />
             <PubCard title="Endoplasmic Reticulum Homeostasis — From Molecules to Organisms: Report on the 14th International Calreticulin Workshop" href="https://doi.org/10.1111/jcmm.17840" />
