@@ -619,6 +619,7 @@ function CV() {
           <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#999", marginBottom: "0.8rem" }}>Links</div>
           {[
             { label: "Google Scholar", href: "https://scholar.google.com/citations?user=8LgCwdwAAAAJ&hl=fr" },
+            { label: "LinkedIn", href: "https://fr.linkedin.com/in/marianne-guilbard-7578301aa/" },
             { label: "ResearchGate", href: "https://www.researchgate.net/profile/Marianne-Guilbard" },
             { label: "Email", href: "mailto:marianne.guilbard@gmail.com" },
           ].map(({ label, href }) => (
@@ -911,6 +912,7 @@ function CV() {
                   { label: "📧 Email", href: "mailto:marianne.guilbard@gmail.com" },
                   { label: "🔗 Google Scholar", href: "https://scholar.google.com/citations?user=8LgCwdwAAAAJ&hl=fr" },
                   { label: "🔗 ResearchGate", href: "https://www.researchgate.net/profile/Marianne-Guilbard" },
+                  { label: "🔗 LinkedIn", href: "https://fr.linkedin.com/in/marianne-guilbard-7578301aa/" },
                 ].map(({ label, href }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{
                     fontFamily: "Georgia, serif", fontSize: "0.88rem",
