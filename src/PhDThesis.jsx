@@ -52,7 +52,7 @@ export default function PhDThesis() {
       {/* Top bar */}
       <header style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        background: "rgba(247,245,240,0.96)", backdropFilter: "blur(8px)",
+        background: "#f7f5f0",
         borderBottom: "1px solid #dde0d8",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 2rem", height: "52px",
