@@ -14,3 +14,19 @@ body {
   min-height: 100vh;
   text-align: left;
 }
+/* Soft fade at the bottom of the viewport to avoid a hard cut-off while scrolling */
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48px;
+  pointer-events: none;
+  z-index: 90;
+  background: linear-gradient(to bottom, rgba(247, 245, 240, 0), rgba(247, 245, 240, 0.85));
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  mask-image: linear-gradient(to bottom, transparent, black);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black);
+}
